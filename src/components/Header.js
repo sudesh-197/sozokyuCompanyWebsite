@@ -1,6 +1,6 @@
 import Ruler from "./Ruler";
 import NavLinks from "./NavLinks";
-import { ICONS, NAV_LINKS } from "@/data/content";
+import { ICONS, NAV_LINKS, WHATSAPP_URL } from "@/data/content";
 
 export default function Header({
   navLinks = NAV_LINKS,
@@ -56,9 +56,19 @@ export default function Header({
               </a>
             </div>
           ) : (
-            <a className="header__talk" href="/contact">
+            <a
+              className="header__talk"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat with us on WhatsApp"
+            >
               <span className="header__talk-well" />
-              <span className="header__talk-label">Let’s Talk</span>
+              <span className="header__talk-label">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={ICONS.whatsapp} alt="" width={13} height={13} />
+                WhatsApp
+              </span>
               <span className="header__talk-edge" />
             </a>
           )}

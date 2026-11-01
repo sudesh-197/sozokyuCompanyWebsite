@@ -5029,3 +5029,29 @@ a.ct-card__value:hover {
     touch-action: auto; /* normal page scroll/tap on the cards */
   }
 }
+/* mobile top bar: WhatsApp button (replaces "Let's Talk") */
+@media (max-width: 767px) {
+  .header__talk {
+    width: 118px;
+  }
+  .header__talk-well {
+    width: 87px; /* 118 − 28 left − 3 right */
+  }
+  .header__talk-label {
+    left: calc(28px + 43.5px); /* centre of the well */
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .header__talk-label img {
+    display: block;
+    width: 13px;
+    height: 13px;
+  }
+}
+/* /contact mobile: leave room under the form so the buttons can scroll above the floating nav */
+@media (max-width: 767px) {
+  .ct {
+    padding-bottom: calc(110px + env(safe-area-inset-bottom));
+  }
+}
