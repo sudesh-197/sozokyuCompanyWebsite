@@ -3798,10 +3798,6 @@ html {
 .svcp__h2 + .svcp__p {
   padding-top: 20px;
 }
-/* service images (mobile only, shown inside the 767px query below) */
-.svcp__media {
-  display: none;
-}
 .contact__btn-wrap:has(.contact__btn--icon),
 .contact__btn--icon {
   width: 145px;
@@ -3857,43 +3853,7 @@ html {
     padding: 16px 0 24px;
   }
   .svcp__label {
-    height: auto;
-    padding-bottom: 16px;
-  }
-  .svcp__media {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 130px;
-    margin-bottom: 20px;
-    background: #f6f6f6;
-    border: 1px solid #fff;
-    border-radius: 8px;
-    overflow: clip;
-  }
-  .svcp__thumbs {
-    display: flex;
-    align-items: center;
-  }
-  .svcp__thumb {
-    position: relative;
-    flex-shrink: 0;
-    width: 80px;
-    height: 80px;
-    margin-right: -18px;
-    border-radius: 12px;
-  }
-  .svcp__thumb:last-child {
-    margin-right: 0;
-  }
-  .svcp__thumb img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-    pointer-events: none;
+    height: 44px;
   }
   .svcp__h2 {
     font-size: 24px;
@@ -5307,5 +5267,47 @@ select {
       var(--pile) + 36px
     ); /* sits 12px lower than card 3, so it lands ON the pile */
     margin-bottom: 32px; /* finished stack leaves right away, together with the title */
+  }
+}
+
+/* ===== Services page (/services): 3 service images, MOBILE ONLY ===== */
+.page--services .svcp__imgs {
+  display: none; /* hidden on tablet + desktop */
+}
+@media (max-width: 767px) {
+  .page--services .svcp__imgs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 130px;
+    margin-bottom: 20px;
+    background: #f6f6f6;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    overflow: clip;
+  }
+  .page--services .svcp__imgs-row {
+    display: flex;
+    align-items: center;
+  }
+  .page--services .svcp__img {
+    position: relative;
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    margin-right: -18px;
+    border-radius: 12px;
+  }
+  .page--services .svcp__img:last-child {
+    margin-right: 0;
+  }
+  .page--services .svcp__img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    pointer-events: none;
   }
 }

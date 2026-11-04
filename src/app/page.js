@@ -17,7 +17,6 @@ export default function Home() {
         <Services />
       </div>
       <Work />
-      <Work />
       <About />
       <Faq />
       <Footer />
