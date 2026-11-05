@@ -5,33 +5,34 @@ import { useState } from "react";
 /* "Wireframe ⇄ Full colour" switch + the 880 × 607 framed screenshot under it
    (Figma "Sozokyu Dashboard" 3895:4674 – toggle 3895:4675, frame 3895:4702).
 
-   Both screens sit in the same frame; the wireframe layer is on top and fades
-   in / out when the switch (or either label) is used. Every measurement is
-   the Figma value expressed as a % of the frame so it scales with the column. */
+   Both screens sit in the same frame; the wireframe layer is on top and is
+   wiped in / out (Colour → Wireframe: right → left,
+   Wireframe → Colour: left → right) when the switch (or either
+   label) is used. Every measurement is the Figma value expressed as a % of
+   the frame so it scales with the column. */
 
-/* switch ticks – [x, top, height] inside the 88 × 30 switch */
-const TICKS_LONG = [
-  [9, 18],
-  [44, 18],
-  [79, 18],
-  [44, 3],
-  [79, 3],
-  [9, 3],
-];
-const TICKS_SHORT = [
-  [17, 3],
-  [51, 3],
-  [17, 23],
-  [51, 23],
-  [27, 3],
-  [61, 3],
-  [27, 23],
-  [61, 23],
-  [37, 3],
-  [71, 3],
-  [37, 23],
-  [71, 23],
-];
+/* ── switch size: change ONLY these numbers (originals: 88 / 30 / 6 / 9 / 4) ── */
+const SWITCH_W = 128; // total width
+const SWITCH_H = 32; // total height
+const GROOVE = 8; // thickness of the dark bar
+const TICK_LONG = 12; // long tick height
+const TICK_SHORT = 6; // short tick height
+
+/* long ticks every 35px, 3 short ticks between each pair */
+const longX = [];
+for (let x = 9; x <= SWITCH_W - 9; x += 35) longX.push(x);
+
+/* [x, top] – top row sits 3px from the top, bottom row 3px from the bottom */
+const TICKS_LONG = longX.flatMap((x) => [
+  [x, 3],
+  [x, SWITCH_H - 3 - TICK_LONG],
+]);
+const TICKS_SHORT = longX.slice(0, -1).flatMap((x) =>
+  [8, 18, 28].flatMap((o) => [
+    [x + o, 3],
+    [x + o, SWITCH_H - 3 - TICK_SHORT],
+  ]),
+);
 
 /* a missing file shouldn't show the browser's broken-image glyph */
 const hideBroken = (e) => {
@@ -44,6 +45,13 @@ export default function WireframeToggle({
   defaultColour = true,
 }) {
   const [isColour, setIsColour] = useState(defaultColour);
+  /* counts clicks – used as a key so the shine animation replays every time */
+  const [clicks, setClicks] = useState(0);
+
+  const choose = (value) => {
+    setIsColour(value);
+    setClicks((c) => c + 1);
+  };
 
   return (
     <div className="case-toggle">
@@ -51,7 +59,7 @@ export default function WireframeToggle({
         <button
           type="button"
           className={`case-toggle__label${isColour ? "" : " is-on"}`}
-          onClick={() => setIsColour(false)}
+          onClick={() => choose(false)}
         >
           Wireframe
         </button>
@@ -62,7 +70,14 @@ export default function WireframeToggle({
           aria-checked={isColour}
           aria-label="Full colour"
           className={`case-switch${isColour ? " is-on" : ""}`}
-          onClick={() => setIsColour((v) => !v)}
+          style={{
+            "--w": `${SWITCH_W}px`,
+            "--h": `${SWITCH_H}px`,
+            "--g": `${GROOVE}px`,
+            "--tl": `${TICK_LONG}px`,
+            "--ts": `${TICK_SHORT}px`,
+          }}
+          onClick={() => choose(!isColour)}
         >
           <span className="case-switch__groove">
             <span className="case-switch__fill" />
@@ -83,22 +98,27 @@ export default function WireframeToggle({
           ))}
           <span className="case-switch__knob">
             <span className="case-switch__glow" />
+            {/* shine sweep – plays 1s after each click, knob only */}
+            {clicks > 0 && (
+              <span
+                key={clicks}
+                className="case-switch__shine"
+                aria-hidden="true"
+              />
+            )}
           </span>
         </button>
 
         <button
           type="button"
           className={`case-toggle__label${isColour ? " is-on" : ""}`}
-          onClick={() => setIsColour(true)}
+          onClick={() => choose(true)}
         >
           Full colour
         </button>
       </div>
 
       <figure className="case-dash">
-        {/* blue wash behind the screenshot */}
-        <span className="case-dash__tint" aria-hidden="true" />
-
         {/* full-colour screenshot */}
         <div className="case-dash__shot" aria-hidden={!isColour}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -106,12 +126,13 @@ export default function WireframeToggle({
             className="case-dash__shot-img"
             src={colour.src}
             alt={colour.alt}
-            loading="lazy"
+            loading="eager"
+            decoding="async"
             onError={hideBroken}
           />
         </div>
 
-        {/* wireframe (on top, fades out in full colour) */}
+        {/* wireframe (on top, wipes in from the right / out to the right) */}
         <div
           className={`case-dash__wire${isColour ? "" : " is-on"}`}
           aria-hidden={isColour}
@@ -121,7 +142,8 @@ export default function WireframeToggle({
             className="case-dash__wire-img"
             src={wireframe.src}
             alt={wireframe.alt}
-            loading="lazy"
+            loading="eager"
+            decoding="async"
             onError={hideBroken}
           />
         </div>

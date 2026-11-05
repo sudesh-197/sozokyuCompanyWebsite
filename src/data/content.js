@@ -413,14 +413,14 @@ export const CASE_STUDIES = {
         // "Wireframe" ⇄ "Full colour" switch (same as Figma). Files: case-sozokyu-wireframe.png / case-sozokyu-colour.png
         toggle: {
           colour: {
-            src: `${IMG}/case-sozokyu-colour.png`,
+            src: `${IMG}/case-sozokyu-colour.webp`,
             alt: "Sozokyu product page in full colour",
           },
           wireframe: {
-            src: `${IMG}/case-sozokyu-wireframe.png`,
+            src: `${IMG}/case-sozokyu-wireframe.webp`,
             alt: "Sozokyu product page as a grey wireframe",
           },
-          defaultColour: true,
+          defaultColour: false,
         },
       },
       {
@@ -491,7 +491,7 @@ export const CASE_STUDIES = {
     meta: [
       { term: "Service", value: "UI/UX Design" },
       { term: "Industry", value: "Food and Quick Commerce" },
-      { term: "Project Duration", value: "4 Weeks" },
+      { term: "Duration", value: "4 Weeks" },
     ],
     hero: {
       src: `${IMG}/mealbox-hero.webp`,
@@ -667,7 +667,7 @@ export const CASE_STUDIES = {
     meta: [
       { term: "Service", value: "E-Commerce Website" },
       { term: "Industry", value: "Clothing Brand" },
-      { term: "Project Duration", value: "8 Weeks" },
+      { term: " Duration", value: "8 Weeks" },
     ],
     // laptop scene + masked screen (same mock-up as the Workley page)
     hero: {

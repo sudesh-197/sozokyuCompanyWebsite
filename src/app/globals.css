@@ -89,11 +89,15 @@ img {
 /*  dots (corner markers)  */
 .dot {
   position: absolute;
+  box-sizing: border-box;
   width: 5px;
   height: 5px;
-  border-radius: 99px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
   background: var(--black);
   box-shadow: 0 0 0 2px var(--bg);
+  pointer-events: none;
 }
 
 /*  ruler  */
@@ -149,7 +153,7 @@ img {
   justify-content: center;
 }
 .ruler--hero {
-  height: 602.086px;
+  height: 602px;
   justify-content: space-between;
 }
 
@@ -238,7 +242,7 @@ img {
   z-index: 2;
 }
 .hero__margin {
-  height: 602.086px;
+  height: 602px;
   border-bottom: 1px solid var(--line);
   border-right: 1px solid var(--line);
 }
@@ -249,17 +253,17 @@ img {
   position: absolute;
   inset: 0 auto auto 0;
   width: 156px;
-  height: 602.086px;
+  height: 602px;
   border-bottom: 1px solid var(--line);
   border-left: 1px solid var(--line);
 }
 .dot--right-bl {
   left: -2px;
-  top: 600.09px;
+  top: 599px;
 }
 .dot--right-tl {
   left: -2px;
-  top: -2px;
+  top: -3px;
 }
 .hero__stage {
   height: 602px;
@@ -273,12 +277,12 @@ img {
   border-bottom: 1px solid var(--line);
 }
 .dot--stage-tl {
-  left: -2px;
-  top: -2px;
+  left: -3px;
+  top: -3px;
 }
 .dot--stage-bl {
-  left: -2px;
-  top: 600.09px;
+  left: -3px;
+  top: 599px;
 }
 .hero__guide {
   position: absolute;
@@ -500,13 +504,13 @@ img {
   white-space: pre;
 }
 .dot--status-left {
-  left: -3.5px;
-  top: 42px;
+  left: -3px;
+  top: 41px;
 }
 .dot--status-right {
   right: auto;
   left: -3px;
-  top: 42px;
+  top: 41px;
 }
 
 /*  Sections below the hero – Figma frame 3658:1687 (1440px)  */
@@ -824,15 +828,15 @@ h3 {
   color: #777b84;
 }
 .dot--work-tl {
-  left: 155px;
-  top: 22px;
+  left: 154px;
+  top: 23px;
 }
 .dot--work-tr {
-  right: 154px;
-  top: 22px;
+  right: 153px;
+  top: 23px;
 }
 .dot--work-bl {
-  left: 155px;
+  left: 154px;
   top: 239px;
 }
 .dot--work-br {
@@ -842,8 +846,8 @@ h3 {
 .work__list {
   position: absolute;
   top: 242px;
-  left: 158px;
-  right: 157px;
+  left: 156px;
+  right: 155px;
 }
 .proj {
   display: flex;
@@ -1126,11 +1130,11 @@ h3 {
   top: 475px;
 }
 .dot--rule-l {
-  left: 155px;
+  left: 154px;
   top: -2px;
 }
 .dot--rule-r {
-  right: 154px;
+  right: 153px;
   top: -2px;
 }
 .work__fade {
@@ -1154,8 +1158,8 @@ h3 {
 .trusted {
   position: absolute;
   top: 1px;
-  left: 158px;
-  right: 157px;
+  left: 156px;
+  right: 155px;
   height: 349px;
   display: flex;
   align-items: center;
@@ -1278,8 +1282,8 @@ h3 {
 .hl {
   position: absolute;
   top: 353px;
-  left: 158px;
-  right: 157px;
+  left: 156px;
+  right: 155px;
   display: flex;
   align-items: stretch;
   padding: 24px 32px;
@@ -1857,7 +1861,7 @@ html {
   .dot--right-bl,
   .dot--stage-bl {
     top: auto;
-    bottom: -3px;
+    bottom: -2px;
   }
   .hero__stage {
     height: auto;
@@ -1991,19 +1995,19 @@ html {
   }
   .dot--work-tl,
   .dot--work-bl {
-    left: calc(var(--side) - 1px);
+    left: calc(var(--side) - 2px);
   }
   .dot--work-tr {
-    right: calc(var(--side) - 2px);
+    right: calc(var(--side) - 3px);
   }
   .dot--work-br {
     right: calc(var(--side) - 3px);
   }
   .dot--rule-l {
-    left: calc(var(--side) - 1px);
+    left: calc(var(--side) - 2px);
   }
   .dot--rule-r {
-    right: calc(var(--side) - 2px);
+    right: calc(var(--side) - 3px);
   }
   .work__list {
     position: relative;
@@ -2489,12 +2493,6 @@ html {
 @media (max-width: 767px) {
   .ruler {
     display: none;
-  }
-  .dot {
-    width: 3px;
-    height: 3px;
-    margin: 1px;
-    box-shadow: 0 0 0 1.5px var(--bg);
   }
   .row--header {
     height: calc(var(--top-gap) + 52px);
@@ -3514,14 +3512,14 @@ html {
   letter-spacing: 1.2px;
   text-transform: uppercase;
   white-space: nowrap;
-  color: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.35);
   transition: color 200ms ease;
 }
 .case-toggle__label:hover {
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(0, 0, 0, 0.6);
 }
 .case-toggle__label.is-on {
-  color: #444;
+  color: #111;
 }
 .case-toggle__label:focus-visible,
 .case-switch:focus-visible {
@@ -3533,8 +3531,8 @@ html {
   appearance: none;
   position: relative;
   flex: none;
-  width: 88px;
-  height: 30px;
+  width: var(--w, 88px);
+  height: var(--h, 30px);
   margin: 0;
   padding: 0;
   border: 0;
@@ -3545,10 +3543,10 @@ html {
 .case-switch__groove {
   position: absolute;
   left: 4px;
-  top: 12px;
-  width: 80px;
-  height: 6px;
-  border-radius: 3px;
+  top: calc((var(--h, 30px) - var(--g, 6px)) / 2);
+  width: calc(var(--w, 88px) - 8px);
+  height: var(--g, 6px);
+  border-radius: calc(var(--g, 6px) / 2);
   background: #050505;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
   overflow: hidden;
@@ -3560,7 +3558,7 @@ html {
   bottom: 0;
   width: 6%;
   background: linear-gradient(90deg, #120a26 0%, #5b2fd8 100%) no-repeat 0 0 /
-    80px 100%;
+    calc(var(--w, 88px) - 8px) 100%;
   transition: width 260ms cubic-bezier(0.3, 0.7, 0.2, 1);
 }
 .case-switch.is-on .case-switch__fill {
@@ -3581,24 +3579,24 @@ html {
   pointer-events: none;
 }
 .case-switch__tick--long {
-  height: 9px;
+  height: var(--tl, 9px);
 }
 .case-switch__tick--short {
-  height: 4px;
+  height: var(--ts, 4px);
 }
 .case-switch__knob {
   position: absolute;
-  left: 72px;
+  left: calc(var(--w, 88px) - 16px);
   top: 2px;
   width: 16px;
-  height: 26px;
+  height: calc(var(--h, 30px) - 4px);
   border-radius: 3px;
   overflow: hidden;
   background: linear-gradient(180deg, #2e2e2e 0%, #1a1a1a 55%, #141414 100%);
   box-shadow:
     0 1px 1px 0 #000,
     0 4px 8px -2px rgba(0, 0, 0, 0.7);
-  transform: translateX(-72px);
+  transform: translateX(calc(-1 * (var(--w, 88px) - 16px)));
   transition: transform 260ms cubic-bezier(0.3, 0.7, 0.2, 1);
 }
 .case-switch.is-on .case-switch__knob {
@@ -3620,7 +3618,7 @@ html {
   left: 7px;
   top: 3px;
   width: 2px;
-  height: 20px;
+  height: calc(var(--h, 30px) - 10px);
   border-radius: 1px;
   background: #d9ceff;
   box-shadow:
@@ -3632,6 +3630,49 @@ html {
 .case-switch.is-on .case-switch__glow {
   opacity: 1;
 }
+/* shine sweep on the knob only: plays 1s after each click */
+.case-switch__shine {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+}
+.case-switch__shine::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: 0;
+  width: 110%; /* thickness of the white band */
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.85) 30%,
+    #ffffff 50%,
+    rgba(255, 255, 255, 0.85) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  transform: translateX(-160%) skewX(-20deg);
+  animation: case-shine 700ms ease-out 1s 1 both;
+}
+@keyframes case-shine {
+  0% {
+    transform: translateX(-160%) skewX(-20deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(180%) skewX(-20deg);
+    opacity: 0;
+  }
+}
 .case-dash {
   position: relative;
   margin: 0;
@@ -3641,53 +3682,32 @@ html {
   background: #eee;
   border-radius: 18px;
 }
-.case-dash__tint,
+/* both layers share the exact same box, so switching never shifts the image */
 .case-dash__shot,
 .case-dash__wire {
   position: absolute;
   left: 9.3182%;
+  top: 12.4382%;
   width: 81.4773%;
-}
-.case-dash__tint {
-  top: 12.4382%;
   height: 75.1235%;
-  background: #0d99ff;
-  opacity: 0.15;
-}
-.case-dash__shot {
-  top: 12.4382%;
-  height: 75.1235%;
-  border-radius: 8px;
-  overflow: hidden;
   pointer-events: none;
 }
-.case-dash__shot-img {
-  position: absolute;
-  left: -0.77%;
-  top: -0.75%;
-  width: 101.02%;
-  height: 100.95%;
-  max-width: none;
-  display: block;
-}
+/* wireframe layer sits on top and is wiped in / out with clip-path.
+   Colour → Wireframe: revealed from the right, moving left  (right → left)
+   Wireframe → Colour: removed from the left, moving right   (left → right) */
 .case-dash__wire {
-  top: 12.2735%;
-  height: 75.6178%;
-  border-radius: 8px;
-  overflow: hidden;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 300ms ease;
+  clip-path: inset(0 0 0 100%);
+  transition: clip-path 1000ms cubic-bezier(0.65, 0, 0.35, 1);
 }
 .case-dash__wire.is-on {
-  opacity: 1;
+  clip-path: inset(0 0 0 0);
 }
+.case-dash__shot-img,
 .case-dash__wire-img {
   position: absolute;
-  left: -0.71%;
-  top: -0.1%;
-  width: 100.96%;
-  height: 100.3%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   max-width: none;
   display: block;
 }
@@ -3698,6 +3718,9 @@ html {
   .case-dash__wire,
   .case-toggle__label {
     transition: none;
+  }
+  .case-switch__shine {
+    display: none;
   }
 }
 @media (max-width: 767px) {
@@ -3798,6 +3821,10 @@ html {
 .svcp__h2 + .svcp__p {
   padding-top: 20px;
 }
+/* service images (mobile only, shown inside the 767px query below) */
+.page--services .svcp__media {
+  display: none;
+}
 .contact__btn-wrap:has(.contact__btn--icon),
 .contact__btn--icon {
   width: 145px;
@@ -3854,6 +3881,45 @@ html {
   }
   .svcp__label {
     height: 44px;
+  }
+  .page--services .svcp__label {
+    height: auto;
+    padding-bottom: 16px;
+  }
+  .page--services .svcp__media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 130px;
+    margin-bottom: 20px;
+    background: #f6f6f6;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    overflow: clip;
+  }
+  .page--services .svcp__thumbs {
+    display: flex;
+    align-items: center;
+  }
+  .page--services .svcp__thumb {
+    position: relative;
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    margin-right: -18px;
+    border-radius: 12px;
+  }
+  .page--services .svcp__thumb:last-child {
+    margin-right: 0;
+  }
+  .page--services .svcp__thumb img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    pointer-events: none;
   }
   .svcp__h2 {
     font-size: 24px;
@@ -4438,7 +4504,7 @@ a.ct-card__value:hover {
 }
 .work--page .dot--work-tl,
 .work--page .dot--work-tr {
-  top: 1px;
+  top: 2px;
 }
 .work--page .dot--work-bl,
 .work--page .dot--work-br {
@@ -4499,7 +4565,7 @@ a.ct-card__value:hover {
   }
   .work--page .dot--work-bl,
   .work--page .dot--work-br {
-    top: 171px;
+    top: 170px;
   }
   .work-mascot {
     display: none;
@@ -4864,7 +4930,7 @@ select {
 @media (max-width: 1279px) {
   .faq + .site-footer {
     height: auto;
-    padding-top: 10px;
+    padding-top: 40px;
   }
   /* desktop-only `top: 40px` must not shift the relatively-positioned card */
   .faq + .site-footer .contact {
@@ -5220,6 +5286,33 @@ select {
     transform: translateY(calc(-1 * var(--stack-shift, 0px)));
   }
 
+  /* the sticky bar's solid background used to cover the lower half of the
+     hero's bottom corner dots, so on mobile those two dots are drawn by the
+     bar itself (always on top, and they travel with it) */
+  .dot--stage-bl,
+  .dot--right-bl {
+    display: none;
+  }
+  .status-stack > .row--status::before,
+  .status-stack > .row--status::after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--black);
+    box-shadow: 0 0 0 2px var(--bg);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .status-stack > .row--status::before {
+    left: calc(var(--side) - 3px);
+  }
+  .status-stack > .row--status::after {
+    right: calc(var(--side) - 3px);
+  }
+
   /* the section's top padding becomes the title area; bottom padding moves
      into the card hold time (below) so bar, title and cards all leave together */
   .services {
@@ -5270,44 +5363,13 @@ select {
   }
 }
 
-/* ===== Services page (/services): 3 service images, MOBILE ONLY ===== */
-.page--services .svcp__imgs {
-  display: none; /* hidden on tablet + desktop */
-}
-@media (max-width: 767px) {
-  .page--services .svcp__imgs {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 130px;
-    margin-bottom: 20px;
-    background: #f6f6f6;
-    border: 1px solid #fff;
-    border-radius: 8px;
-    overflow: clip;
-  }
-  .page--services .svcp__imgs-row {
-    display: flex;
-    align-items: center;
-  }
-  .page--services .svcp__img {
-    position: relative;
-    flex-shrink: 0;
-    width: 80px;
-    height: 80px;
-    margin-right: -18px;
-    border-radius: 12px;
-  }
-  .page--services .svcp__img:last-child {
-    margin-right: 0;
-  }
-  .page--services .svcp__img img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-    pointer-events: none;
+/* ===== Desktop only (>= 1280px): vertical lines below the "Work." heading
+   run in one straight line with the heading lines and the corner dots ===== */
+@media (min-width: 1280px) {
+  .work__list,
+  .trusted,
+  .hl {
+    left: 156px;
+    right: 155px;
   }
 }
